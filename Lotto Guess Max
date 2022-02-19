@@ -1,0 +1,27 @@
+import random
+
+print('welcome to Lotto number guesser')
+print('')
+
+
+lucky_number = int(input('please type your lucky number: '))
+
+user_range = int(input('please type the max range of the number you would like to test: '))
+
+print("Here are your results:")    
+
+count = 0
+percentage = (1/user_range)*100
+
+for i in range(user_range):
+    rng = random.randint(0,user_range)
+    if lucky_number != rng:
+        print(rng)
+        count += 1
+        continue
+    elif lucky_number == rng:
+        recurring_probability = (1-(1-(percentage/100))**count)*100
+        print(lucky_number)
+    break
+
+print("your odds were", percentage,"% in finding your lucky number","'",lucky_number,"'","per attempt with a range of",user_range,"you had", count + 1,"attempts before hitting your lotto number at a",(recurring_probability),"% chance." )
